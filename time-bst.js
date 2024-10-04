@@ -3,7 +3,7 @@ const BST = require('./BST');
 // const N =      1_000;
 // const N =  1_000_000;
 // const N = 10_000_000;
-const N = 100_000_000;
+const N = 1_000_000;
 let start, end;
 const timeBST = () => {
   console.log(`setting up an Array and a Tree of size N=${N}...`);
