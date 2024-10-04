@@ -3,9 +3,10 @@ const BST = require('./BST');
 // const N =      1_000;
 // const N =  1_000_000;
 // const N = 10_000_000;
-const N = 10_000_000;
+const N = 100_000_000;
 let start, end;
 const timeBST = () => {
+  console.log(`setting up an Array and a Tree of size N=${N}...`);
   // create an array size N
   const array = [];
   for (let i = 0; i < N; i++) {
@@ -18,22 +19,29 @@ const timeBST = () => {
     tree.insert(array[i]);
   }
 
-  const target = Math.floor(N / 2);
+  // try to find an average-ish number in the tree
+  const target = Math.floor(N / 2) + 7;
+
+  // To time an operation:
+  //   take a note of the start time
+  //   search for the target in the tree
+  //   take a note of the end time
+  //   log how long it took
+  console.log("Timing both operations...")
 
   start = performance.now();
-  console.log(`${target}? ${array.find(value => value == target)}`);
+  const resultArray = array.find(value => value == target) ? true : false;
+  console.log(`${target}? ${resultArray}`);
   end = performance.now();
   console.log( `array find took ${(end - start).toFixed(2)} ms`);
 
   start = performance.now();
-  console.log(`${target}? ${tree.find(target)}`);
+  const resultTree = tree.find(target);
+  console.log(`${target}? ${resultTree}`);
   end = performance.now();
   console.log( `tree find took ${(end - start).toFixed(2)} ms`);
 
-  // take a note of the start time
-  // find something in the tree
-  // take a note of the end time
-  // log how long it took
+
 }
 
 timeBST();
